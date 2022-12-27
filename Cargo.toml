@@ -1,0 +1,21 @@
+[package]
+name = "bitcoind-cache"
+description = "Alternative storage for bitcoind block data"
+version = "0.1.1"
+edition = "2021"
+homepage = "https://github.com/johncantrell97/bitcoind-cache"
+repository = "https://github.com/johncantrell97/bitcoind-cache"
+authors = ["John Cantrell <johncantrell97@protonmail.com>"]
+license = "MIT"
+
+[dependencies]
+bitcoin = "0.29"
+tokio = { version = "1", optional = true}
+reqwest = { version = "0.11", optional = true }
+rust-s3 = { version = "0.32", optional = true }
+
+[features]
+default = ["r2", "http", "fs"]
+r2 = ["rust-s3"]
+fs = ["tokio"]
+http = ["reqwest"]
